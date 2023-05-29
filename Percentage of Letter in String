@@ -1,0 +1,11 @@
+class Solution(object):
+    def percentageLetter(self, s, letter):
+        """
+        :type s: str
+        :type letter: str
+        :rtype: int
+        """
+    
+        count1 = s.count(letter)
+        count2 = (float(count1) / len(s)) * 100
+        return int(count2)
