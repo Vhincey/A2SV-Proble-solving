@@ -1,0 +1,15 @@
+class Solution(object):
+    def findTheDifference(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: str
+        """
+        letter = ""
+        for i in t:
+            if i not in s and len(t) > len(s) :
+                #print(i)
+                letter += i
+            elif s.count(i) < t.count(i):
+                letter = i
+        return letter
