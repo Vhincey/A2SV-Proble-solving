@@ -1,0 +1,9 @@
+n1 = int(input())
+english_set = set(input().split())
+
+n2 = int(input())
+french_set = set(input().split())
+
+total_students = len(english_set.union(french_set))
+
+print(total_students)
