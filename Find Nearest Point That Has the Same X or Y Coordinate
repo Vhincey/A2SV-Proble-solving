@@ -1,0 +1,19 @@
+class Solution(object):
+    def nearestValidPoint(self, x, y, points):
+        """
+        :type x: int
+        :type y: int
+        :type points: List[List[int]]
+        :rtype: int
+        """
+
+        min_dist = float('inf')
+        min_index = -1
+
+        for i, point in enumerate(points):
+            px, py = point[0], point[1]
+            if px == x or py == y:  # Check if the point is valid
+                dist = abs(px - x) + abs(py - y)  # Calculate Manhattan distance
+                if dist < min_dist:  # Update minimum distance and index
+                    min_dist = dist
+                    min_index = i
