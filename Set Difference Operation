@@ -1,0 +1,9 @@
+n1 = int(input())
+english_set = set(input().split())
+
+n2 = int(input())
+french_set = set(input().split())
+
+english_only = english_set.difference(french_set)
+
+print(len(english_only))
