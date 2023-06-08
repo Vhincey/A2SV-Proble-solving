@@ -1,0 +1,11 @@
+set_a = set(input().split())
+n = int(input())
+is_superset = True
+
+for _ in range(n):
+    set_b = set(input().split())
+    if not set_b.issubset(set_a):
+        is_superset = False
+        break
+
+print(is_superset)
