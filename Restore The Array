@@ -1,0 +1,14 @@
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    b = list(map(int, input().split()))
+
+    a = [b[0]]  # Initialize a with the first element of b
+
+    for i in range(n - 2):
+        a.append(max(b[i], b[i + 1]))
+
+    a.append(b[n - 2])  # Append the last element of b to a
+
+    print(*a)
