@@ -1,0 +1,24 @@
+def spiralOrder(matrix):
+    if not matrix:
+        return []
+
+    result = []
+    while matrix:
+        # Traverse top row from left to right
+        result.extend(matrix.pop(0))
+
+        # Traverse right column from top to bottom
+        for row in matrix:
+            if row:
+                result.append(row.pop())
+
+        # Traverse bottom row from right to left
+        if matrix:
+            result.extend(matrix.pop()[::-1])
+
+        # Traverse left column from bottom to top
+        for row in matrix[::-1]:
+            if row:
+                result.append(row.pop(0))
+
+    return result
