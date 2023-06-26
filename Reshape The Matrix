@@ -1,0 +1,24 @@
+class Solution(object):
+    def matrixReshape(self, mat, r, c):
+        """
+        :type mat: List[List[int]]
+        :type r: int
+        :type c: int
+        :rtype: List[List[int]]
+        """
+
+        orig_Rows = len(mat)
+        orig_Cols = len(mat[0])
+        totalElements = orig_Rows * orig_Cols
+
+        if totalElements != r * c:
+            return mat
+
+        res = [[0] * c for i in range(r)]
+        
+        for count in range(totalElements):
+            row = count // c
+            col = count % c
+            res[row][col] = mat[count // orig_Cols][count % orig_Cols]
+        
+        return res
