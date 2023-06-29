@@ -1,0 +1,29 @@
+class Solution(object):
+    def numMagicSquaresInside(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        def is_magic_square(subgrid):
+            unique_nums = set(num for row in subgrid for num in row)
+            if len(unique_nums) != 9 or any(num < 1 or num > 9 for num in unique_nums):
+                return False
+            target_sum = sum(subgrid[0])
+            row_sums = [sum(row) for row in subgrid]
+            col_sums = [sum(col) for col in zip(*subgrid)]
+            diagonal_sum1 = subgrid[0][0] + subgrid[1][1] + subgrid[2][2]
+            diagonal_sum2 = subgrid[0][2] + subgrid[1][1] + subgrid[2][0]
+            return all(sum_row == target_sum for sum_row in row_sums) \
+                and all(sum_col == target_sum for sum_col in col_sums) \
+                and diagonal_sum1 == target_sum \
+                and diagonal_sum2 == target_sum
+
+        count = 0
+        for i in range(len(grid) - 2):
+            for j in range(len(grid[0]) - 2):
+                subgrid = [row[j:j+3] for row in grid[i:i+3]]
+                if is_magic_square(subgrid):
+                    count += 1
+
+        return count
+
