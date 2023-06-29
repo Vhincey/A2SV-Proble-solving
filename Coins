@@ -1,0 +1,16 @@
+t = int(input())
+
+for _ in range(t):
+    n, k = map(int, input().split())
+    found = False
+
+    for x in range(2):
+        remaining = n - x * k
+        if remaining >= 0 and remaining % 2 == 0:
+            found = True
+            break
+
+    if found:
+        print("YES")
+    else:
+        print("NO")
