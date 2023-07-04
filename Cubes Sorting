@@ -1,0 +1,17 @@
+t = int(input())
+ 
+for i in range(t):
+    n = int(input())
+    volumes = list(map(int, input().split()))
+ 
+    count = 0
+    for i in range(1, n):
+        if volumes[i] < volumes[i-1]:
+            count += 1
+       
+            
+    max_exchanges = n - 1
+    if count != max_exchanges:
+        print("YES")
+    else:
+        print("NO")
