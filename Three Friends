@@ -1,0 +1,20 @@
+def find_min_distance(a, b, c):
+  """Finds the minimum distance between a, b, and c."""
+  result = []
+  for i in (a - 1, a, a + 1):
+    for j in (b - 1, b, b + 1):
+      for k in (c - 1, c, c + 1):
+        ans = abs(i - j) + abs(i - k) + abs(j - k)
+        result.append(ans)
+  return min(result)
+
+
+q = int(input())
+output = []
+for i in range(q):
+  a, b, c = map(int, input().split())
+  output.append(find_min_distance(a, b, c))
+
+
+for i in output:
+  print(i)
