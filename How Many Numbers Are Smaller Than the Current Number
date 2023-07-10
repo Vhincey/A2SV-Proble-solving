@@ -1,0 +1,23 @@
+class Solution(object):
+    def smallerNumbersThanCurrent(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+
+        
+        count = [0] * 101 
+
+        for num in nums:
+            count[num] += 1
+
+        smaller_counts = [0] * len(nums)
+        smaller_count = 0
+
+        for i, num in enumerate(nums):
+            for j in range(num):
+                smaller_count += count[j]
+            smaller_counts[i] = smaller_count
+            smaller_count = 0
+
+        return smaller_counts
