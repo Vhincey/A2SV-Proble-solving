@@ -1,0 +1,17 @@
+def sortColors(nums):
+    left = 0
+    right = len(nums) - 1
+    curr = 0
+
+    while curr <= right:
+        if nums[curr] == 0:
+            # Move the 0 to the left
+            nums[curr], nums[left] = nums[left], nums[curr]
+            curr += 1
+            left += 1
+        elif nums[curr] == 2:
+            # Move the 2 to the right
+            nums[curr], nums[right] = nums[right], nums[curr]
+            right -= 1
+        else:
+            curr += 1
