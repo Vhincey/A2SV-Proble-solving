@@ -1,0 +1,18 @@
+class Solution(object):
+    def largestNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: str
+        """
+        nums = list(map(str, nums))
+        
+        for i in range(len(nums)):
+            for j in range(len(nums) - 1):
+                if nums[j] + nums[j + 1] < nums[j + 1] + nums[j]:
+                    nums[j], nums[j + 1] = nums[j + 1], nums[j]
+        print(nums)
+        largest_num = ''.join(nums)
+        
+        largest_num = largest_num.lstrip('0')
+        
+        return largest_num if largest_num else '0'
