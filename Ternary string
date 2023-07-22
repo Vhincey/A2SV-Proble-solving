@@ -1,0 +1,25 @@
+t = int(input())
+ 
+for i in range(t):
+    s = input()
+    
+    num_counts = [0, 0, 0] 
+    min_length = float('inf')  
+ 
+    left = 0
+    right = 0
+ 
+    while right < len(s):
+        num_counts[int(s[right]) - 1] += 1  # Increment count of current character
+        right += 1
+ 
+        
+        while all(count > 0 for count in num_counts):
+            min_length = min(min_length, right - left)
+            num_counts[int(s[left]) - 1] -= 1  # Decrement count of leftmost character
+            left += 1
+ 
+    if min_length == float('inf'):
+        min_length = 0
+ 
+    print(min_length)
