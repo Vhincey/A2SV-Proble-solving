@@ -1,0 +1,32 @@
+def is_beautiful(matrix):
+    row1 = matrix[0]
+    row2 = matrix[1]
+ 
+    if row1[0] < row1[1] and row2[0] < row2[1] and row1[0] < row2[0] and row1[1] < row2[1]:
+        return True
+ 
+    for v in range(3):
+        temp = row1[0]
+        row1[0] = row1[1]
+        row1[1] = row2[1]
+        row2[1] = row2[0]
+        row2[0] = temp
+ 
+        if row1[0] < row1[1] and row2[0] < row2[1] and row1[0] < row2[0] and row1[1] < row2[1]:
+            return True
+ 
+    return False
+ 
+ 
+t = int(input())
+ 
+for i in range(t):
+    matrix = []
+    for v in range(2):
+        row = list(map(int, input().split()))
+        matrix.append(row)
+ 
+    if is_beautiful(matrix):
+        print("YES")
+    else:
+        print("NO")
