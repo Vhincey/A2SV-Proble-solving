@@ -1,0 +1,38 @@
+def max_coloring_cost(n, arr):
+    # Sorting the array to easily find min and max elements
+    sorted_arr = sorted(arr)
+ 
+    # If the array has less than two elements, return 0 as cost
+    if n < 2:
+        return 0
+ 
+    # If n is even 
+    if n % 2 == 0:
+        colors = n - (n//2)
+    else:
+        colors = n - (n//2)
+ 
+    max_cost = 0
+    for i in range(colors):
+        # Using two pointers to find max and min for each color
+        min_elem = sorted_arr[i]
+        max_elem = sorted_arr[n - i - 1]
+ 
+        # Calculate the cost for the current color and add it to the max_cost
+        color_cost = max_elem - min_elem
+        max_cost += color_cost
+ 
+    return max_cost
+ 
+def main():
+    t = int(input())  # Number of test cases
+ 
+    for i in range(t):
+        n = int(input())  
+        arr = list(map(int, input().split()))  # Array a
+ 
+        max_cost = max_coloring_cost(n, arr)
+        print(max_cost)
+ 
+if __name__ == "__main__":
+    main()
