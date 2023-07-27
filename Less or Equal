@@ -1,0 +1,20 @@
+def find_x(n, k, sequence):
+    left, right = 1, 10**9  
+ 
+    while left < right:
+        mid = (left + right) // 2
+        count = sum(1 for num in sequence if num <= mid)
+ 
+        if count < k:
+            left = mid + 1
+        else:
+            right = mid
+ 
+    count = sum(1 for num in sequence if num <= left)
+ 
+    return left if count == k else -1
+ 
+n, k = map(int, input().split())
+sequence = list(map(int, input().split()))
+ 
+print(find_x(n, k, sequence))
