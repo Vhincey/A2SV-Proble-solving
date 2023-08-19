@@ -4,7 +4,8 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: bool
         """
-        
+
+        # Method 1
         # rows = len(matrix)
         # cols = len(matrix[0])
         
@@ -15,6 +16,7 @@ class Solution(object):
         
         # return True
 
+        # Method 2
         for i in range(len(matrix)-1):
             for j in range(len(matrix[0])-1):
                 if matrix[i][j] != matrix[i + 1][j + 1] :
