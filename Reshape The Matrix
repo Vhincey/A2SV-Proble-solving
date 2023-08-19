@@ -6,19 +6,35 @@ class Solution(object):
         :type c: int
         :rtype: List[List[int]]
         """
+        # Method 1
+        # orig_Rows = len(mat)
+        # orig_Cols = len(mat[0])
+        # totalElements = orig_Rows * orig_Cols
 
-        orig_Rows = len(mat)
-        orig_Cols = len(mat[0])
-        totalElements = orig_Rows * orig_Cols
+        # if totalElements != r * c:
+        #     return mat
 
-        if totalElements != r * c:
+        # res = [[0] * c for i in range(r)]
+        
+        # for count in range(totalElements):
+        #     row = count // c
+        #     col = count % c
+        #     res[row][col] = mat[count // orig_Cols][count % orig_Cols]
+        
+        # return res
+
+        # Method 2
+        m = len(mat)
+        n = len(mat[0])
+
+        if n * m != r * c:
             return mat
+        
+        reshaped_matrix = [[0] * c for _ in range(r)]
 
-        res = [[0] * c for i in range(r)]
-        
-        for count in range(totalElements):
-            row = count // c
-            col = count % c
-            res[row][col] = mat[count // orig_Cols][count % orig_Cols]
-        
-        return res
+        v = 0
+        for i in range(m):
+            for j in range(n):
+                reshaped_matrix[v // c][v % c] = mat[i][j]
+                v += 1
+        return reshaped_matrix
