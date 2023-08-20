@@ -1,24 +1,63 @@
-def spiralOrder(matrix):
-    if not matrix:
-        return []
+class Solution(object):
+    def spiralOrder(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: List[int]
+        """
+        # Method 1
+        # if not matrix:
+        #     return []
 
-    result = []
-    while matrix:
-        # Traverse top row from left to right
-        result.extend(matrix.pop(0))
+        # result = []
+        # while matrix:
+        #     # Traverse top row from left to right
+        #     result.extend(matrix.pop(0))
 
-        # Traverse right column from top to bottom
-        for row in matrix:
-            if row:
-                result.append(row.pop())
+        #     # Traverse right column from top to bottom
+        #     for row in matrix:
+        #         if row:
+        #             result.append(row.pop())
 
-        # Traverse bottom row from right to left
-        if matrix:
-            result.extend(matrix.pop()[::-1])
+        #     # Traverse bottom row from right to left
+        #     if matrix:
+        #         result.extend(matrix.pop()[::-1])
 
-        # Traverse left column from bottom to top
-        for row in matrix[::-1]:
-            if row:
-                result.append(row.pop(0))
+        #     # Traverse left column from bottom to top
+        #     for row in matrix[::-1]:
+        #         if row:
+        #             result.append(row.pop(0))
 
-    return result
+        # return result
+
+        # Method 2
+        res = []
+        
+        left, right = 0 , len(matrix[0])
+        top , bottom = 0 , len(matrix)
+
+        while left < right and top < bottom:
+            # Top row
+            for i in range(left , right):
+                res.append(matrix[top][i])
+            top += 1
+
+            # Right column
+            for i in range(top , bottom ):
+                res.append(matrix[i][right - 1])
+            right -= 1
+
+            if not (left < right and top < bottom):
+                break
+
+            # Bottom row
+            for i in range(right - 1, left - 1, -1):
+                res.append(matrix[bottom -1][i])
+            bottom -= 1
+
+            # Left column
+            for i in range(bottom - 1, top -1, -1):
+                res.append(matrix[i][left])
+            left += 1
+
+
+        return res
