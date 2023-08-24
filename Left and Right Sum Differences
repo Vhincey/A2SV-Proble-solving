@@ -1,0 +1,26 @@
+class Solution(object):
+    def leftRightDifference(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+
+        n = len(nums)
+        left_sum = [0] * n  
+        right_sum = [0] * n  
+        
+        # Calculate the left sums
+        prefix_sum = 0
+        for i in range(n):
+            left_sum[i] = prefix_sum
+            prefix_sum += nums[i]
+        
+        # Calculate the right sums
+        suffix_sum = 0
+        for i in range(n - 1, -1, -1):
+            right_sum[i] = suffix_sum
+            suffix_sum += nums[i]
+        
+        answer = [abs(left_sum[i] - right_sum[i]) for i in range(n)]
+        
+        return answer
