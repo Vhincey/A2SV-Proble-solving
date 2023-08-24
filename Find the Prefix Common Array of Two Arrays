@@ -1,0 +1,35 @@
+class Solution(object):
+    def findThePrefixCommonArray(self, A, B):
+        """
+        :type A: List[int]
+        :type B: List[int]
+        :rtype: List[int]
+        """
+        # Method 1
+        # res = []
+        # c = collections.Counter()
+       
+        # for x,y in zip(A, B):
+        #     c[x] += 1
+        #     c[y] += 1
+        
+        #     res.append(sum(1 for x in c.keys() if c[x] == 2))
+        # return res
+
+        #Method 2
+        n = len(A)
+        res = [] 
+        frequency = [0] * (n + 1)
+        count = 0
+
+        for i in range(n):
+            frequency[A[i]] += 1
+            if frequency[A[i]] == 2:
+                count += 1
+            frequency[B[i]] += 1
+            if frequency[B[i]] == 2:
+                count += 1
+            res.append(count)
+
+        return res
+
