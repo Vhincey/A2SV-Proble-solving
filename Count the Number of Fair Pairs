@@ -1,0 +1,24 @@
+class Solution(object):
+    def countFairPairs(self, nums, lower, upper):
+        """
+        :type nums: List[int]
+        :type lower: int
+        :type upper: int
+        :rtype: int
+        """
+        
+        nums.sort()
+        total = 0
+
+        for x in nums:
+            target_low = lower - x
+            target_high = upper - x
+            
+            low = bisect.bisect_left(nums, target_low)
+            high = bisect.bisect_right(nums, target_high)
+
+            count = high - low
+            if target_low <= x <= target_high:
+                count -= 1
+            total += count
+        return total // 2
