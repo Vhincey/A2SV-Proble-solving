@@ -1,0 +1,22 @@
+class Solution(object):
+    def countCompleteSubarrays(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+
+        N = len(nums)
+        C = len(set(nums))
+        count = 0
+
+        for i in range(N):
+            s = set()
+
+            for j in range(i, N):
+                s.add(nums[j])
+
+                if len(s) == C:
+                    count += 1
+                elif len(s) > C:
+                    break
+        return count
