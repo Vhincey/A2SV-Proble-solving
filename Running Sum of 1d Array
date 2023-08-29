@@ -1,0 +1,15 @@
+class Solution(object):
+    def runningSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+
+        N = len(nums)
+        ps = [0] * N 
+        print(ps)
+
+        for i in range(N):
+            ps[i] = ps[i-1] + nums[i]
+        return ps
+            
