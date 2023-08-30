@@ -1,0 +1,33 @@
+class Solution(object):
+    def productExceptSelf(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+
+        N = len(nums)
+        ps1 = [0] * (N)
+        ps2 = [0] * (N)
+
+        answer = [1] * N
+
+        for i in range(N ):
+            if i == 0:
+                ps1[i] = nums[i]
+            else:
+                ps1[i] = ps1[i - 1] * nums[i]
+        for i in range(N - 1, -1, -1):
+            if i == N - 1:
+                ps2[i] = nums[i]
+            else:
+                ps2[i] = ps2[i + 1] * nums[i]
+        for i in range(N):
+            if i == 0:
+                answer[i] = ps2[i + 1] 
+            elif i == N - 1:
+                answer[i] = ps1[i - 1] 
+            else:
+                answer[i] = ps1[i - 1] * ps2[i + 1]   
+        return answer    
+        
+       
