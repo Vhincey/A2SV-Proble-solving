@@ -1,0 +1,44 @@
+class Solution(object):
+    def shiftingLetters(self, s, shifts):
+        """
+        :type s: str
+        :type shifts: List[int]
+        :rtype: str
+        """
+        # N = len(s) + 1
+        # ps = [0] * N
+
+        # for i in range(1, N):
+        #     ps[i] = ps[i - 1] + shifts[i - 1]
+        # print(ps)
+
+        # output = []
+        # left = 0  
+        # for v in range(N - 1):
+        #     number = ord(s[v])
+        #     print(number)
+        #     sup = (ord(s[v]) - 97 + (ps[-1] - ps[left])) % 26 + 97
+        #     output.append(chr(sup))
+        #     left += 1  
+        # print(str(output))
+
+        # return "".join(output)
+
+
+        N = len(s)
+        ps = [0] * (N + 1)
+
+        for i in range(N - 1, -1, -1):
+            ps[i] = ps[i + 1] + shifts[i]
+        print(ps)
+
+        output = []
+
+        for i in range(N):
+            shifted_char = chr(((ord(s[i]) - 97  + ps[i]) % 26) + 97)
+            output.append(shifted_char)
+
+        return "".join(output)
+        
+
+        
