@@ -1,0 +1,22 @@
+class Solution(object):
+    def minimumRemoval(self, beans):
+        """
+        :type beans: List[int]
+        :rtype: int
+        """
+
+        N = len(beans)
+        beans.sort()
+        tots = 0
+        mini = float('inf')
+        cum = 0
+        #diff = []
+
+        tots = sum(beans)
+          
+        for i in range(N ):
+            cum = tots - (beans[i] * (N - i))
+            mini = min(mini, cum)
+            # diff.append(tots - (beans[i] * (N - i)))
+        return mini
+        # return min(diff)
