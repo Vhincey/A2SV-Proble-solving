@@ -1,0 +1,39 @@
+class Solution(object):
+    def gridGame(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        # # One
+        # # computing numbers after as suffix
+        # suffix = [element for element in grid[0]]
+        # suffixSum = 0
+        # for i in range(len(suffix)-1,-1,-1):
+        #     suffix[i] = suffixSum
+        #     suffixSum += grid[0][i]
+            
+        # #Populate a prefix sum array
+        # #computing numbers before as prefix
+        # prefix = [element for element in grid[1]]
+        # prefixSum = 0
+        # for i in range(len(prefix)):
+        #     prefix[i] = prefixSum
+        #     prefixSum += grid[1][i] 
+       
+        # low = float("inf")
+        # for i in range(len(prefix)):
+        #     low = min(low, max(prefix[i], suffix[i]))
+            
+        # return lowest
+
+        #Two
+        n = len(grid[0])
+        top, bottom = sum(grid[0]), 0
+        ans = float("inf")
+        
+        for i in range(n):
+            top -= grid[0][i]
+            ans = min(ans, max(top, bottom))
+            bottom += grid[1][i]
+        
+        return ans
