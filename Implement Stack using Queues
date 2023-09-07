@@ -38,6 +38,60 @@ class MyStack(object):
         else:
             return False
 
+# Method 2 using linked lists
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.next = None
+
+class MyStack(object):
+
+    def __init__(self):
+        self.top_node = None
+        self.size = 0
+
+    def push(self, x):
+        """
+        :type x: int
+        :rtype: None
+        """
+        node = Node(x)
+
+        node.next = self.top_node
+        self.top_node = node
+        self.size += 1
+             
+        
+    def pop(self):
+        """
+        :rtype: int
+        """
+        if self.size == 0:
+            return 
+        val = self.top_node.val
+        self.top_node = self.top_node.next
+        self.size -= 1
+        return val
+
+        
+    def top(self):
+        """
+        :rtype: int
+        """
+        return self.stack[-1]
+        
+
+    def top(self):
+        """
+        :rtype: int
+        """
+        if self.empty():
+            return 
+        return self.top_node.val
+
+    def empty(self):
+        return self.size == 0
+
         
 
 
@@ -47,3 +101,7 @@ class MyStack(object):
 # param_2 = obj.pop()
 # param_3 = obj.top()
 # param_4 = obj.empty()
+
+        
+
+
