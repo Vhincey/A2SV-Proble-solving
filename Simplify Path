@@ -1,0 +1,18 @@
+class Solution:
+    def __init__(self):
+        self.cano_path = []
+
+    def simplifyPath(self, path: str) -> str:
+        components = path.split('/')
+        # print(components)
+        
+        for component in components:
+            if component == '..':
+                if self.cano_path:
+                    self.cano_path.pop()
+            elif component and component != '.':
+                self.cano_path.append(component)
+
+        canonical_path = '/' + '/'.join(self.cano_path)
+
+        return canonical_path
