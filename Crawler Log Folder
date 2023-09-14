@@ -1,0 +1,16 @@
+class Solution:
+    def minOperations(self, logs: List[str]) -> int:
+        stack = []
+        size = 0
+
+        for file in logs:
+            if file == "../":
+                if stack:
+                    stack.pop()
+                    size -= 1
+            elif file == "./":
+                continue
+            else:
+                stack.append(file)
+                size += 1
+        return size
