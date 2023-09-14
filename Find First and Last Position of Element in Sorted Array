@@ -1,0 +1,54 @@
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        n = len(nums) - 1
+        left, right = 0, n 
+
+        # while left <= right:
+        #     mid = left + (right - left) // 2
+
+        #     if nums[mid] < target:
+        #         left = mid + 1
+        #     elif nums[mid] > target:
+        #         right = mid - 1
+        #     else:
+        #         lefta, righta = mid, mid
+        #         while lefta > 0 and nums[lefta - 1] == target:
+        #             lefta -= 1
+        #         while righta < n  and nums[righta + 1] == target:
+        #             righta += 1
+        #         return lefta,righta
+        # return -1,-1
+
+        def leftthingz(nums, target):
+            n = len(nums) - 1
+            left, right = 0, n 
+
+            while left <= right:
+                mid = left + (right - left) // 2
+                if nums[mid] < target:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+            return left
+
+        def rightthingz(nums, target):
+            n = len(nums) - 1
+            left, right = 0, n 
+
+            while left <= right:
+                mid = left + (right - left) // 2
+                if nums[mid] <= target:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+            return right
+
+        left_index = leftthingz(nums, target)
+        right_index = rightthingz(nums, target)
+        
+        if left_index <= right_index:
+            return [left_index, right_index]
+        else:
+            return [-1, -1]
+
+           
