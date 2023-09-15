@@ -1,0 +1,173 @@
+class MyCircularDeque(object):
+
+    def __init__(self, k):
+        """
+        :type k: int
+        """
+        self.deque = deque()
+        self.maxsize = k
+        self.size = 0
+
+    def insertFront(self, value):
+        """
+        :type value: int
+        :rtype: bool
+        """
+        while self.size < self.maxsize:
+            if self.size == 0:
+                self.deque.append(value)
+            else:
+                self.deque.appendleft(value)
+            self.size += 1
+            return True
+        return False
+
+    def insertLast(self, value):
+        """
+        :type value: int
+        :rtype: bool
+        """
+        while self.size < self.maxsize:
+            self.deque.append(value)
+            self.size += 1
+            return True
+        return False
+                    
+    def deleteFront(self):
+        """
+        :rtype: bool
+        """
+        if self.size:
+            self.deque.popleft()
+            self.size -= 1
+            return True
+        return False
+        
+
+    def deleteLast(self):
+        """
+        :rtype: bool
+        """
+        if self.size:
+            self.deque.pop()
+            self.size -= 1
+            return True
+        return False
+
+    def getFront(self):
+        """
+        :rtype: int
+        """
+        if self.size:
+            return self.deque[0]
+        return -1
+
+    def getRear(self):
+        """
+        :rtype: int
+        """
+        if self.size:
+            return self.deque[-1]
+        return -1        
+
+    def isEmpty(self):
+        """
+        :rtype: bool
+        """
+        return self.size == 0
+
+    def isFull(self):
+        """
+        :rtype: bool
+        """
+        return self.size == self.maxsize
+
+# Using Linked Lists
+
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+class MyCircularDeque:
+
+    def __init__(self, k: int):
+        self.head = self.tail = None
+        self.size = 0
+        self.maxsize = k
+
+    def insertFront(self, value: int) -> bool:
+
+        while self.size < self.maxsize:
+            node = Node(value)
+
+            if self.size:
+                node.next = self.head
+            self.head = node
+            if self.size == 0:
+                self.head = self.tail = node
+            self.size += 1
+            return True
+        return False
+
+    def insertLast(self, value: int) -> bool:
+        while self.size < self.maxsize:
+            node = Node(value)
+            if self.size:
+                self.tail.next = node
+            self.tail = node
+            if self.size == 0:
+                self.head = self.tail = node
+            self.size += 1
+            return True
+        return False
+
+    def deleteFront(self) -> bool:
+        if self.size == 0:
+            return False
+        if self.size == 1:
+            self.head = self.tail = None
+        else:
+            self.head = self.head.next
+        self.size -= 1
+        return True
+        
+
+    def deleteLast(self) -> bool:
+        if self.size == 0:
+            return False
+        if self.size == 1:
+            self.head = self.tail = None
+        else:
+            cur = self.head
+            while cur.next != self.tail:
+                cur = cur.next
+            cur.next = None
+            self.tail = cur
+        self.size -= 1
+        return True
+
+    def getFront(self) -> int:
+        return self.head.value if self.size else -1
+        
+    def getRear(self) -> int:
+        return self.tail.value if self.size else -1
+
+    def isEmpty(self) -> bool:
+        return self.size == 0        
+
+    def isFull(self) -> bool:
+        return self.size == self.maxsize
+        
+
+
+# Your MyCircularDeque object will be instantiated and called as such:
+# obj = MyCircularDeque(k)
+# param_1 = obj.insertFront(value)
+# param_2 = obj.insertLast(value)
+# param_3 = obj.deleteFront()
+# param_4 = obj.deleteLast()
+# param_5 = obj.getFront()
+# param_6 = obj.getRear()
+# param_7 = obj.isEmpty()
+# param_8 = obj.isFull()
