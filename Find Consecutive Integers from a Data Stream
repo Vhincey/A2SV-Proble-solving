@@ -1,0 +1,32 @@
+class DataStream(object):
+
+    def __init__(self, value, k):
+        """
+        :type value: int
+        :type k: int
+        """
+        self.value = value
+        self.maxsize = k
+        self.size = 0
+        self.queue = []
+        self.count = 0
+
+    def consec(self, num):
+        """
+        :type num: int
+        :rtype: bool
+        """
+        # if self.size < self.maxsize:
+        if len(self.queue) == self.maxsize:
+            if self.queue[0] == self.value:
+                self.count -= 1
+            self.queue.pop(0)
+        self.queue.append(num)
+        if num == self.value:
+            self.count += 1
+        return self.count == self.maxsize       
+
+
+# Your DataStream object will be instantiated and called as such:
+# obj = DataStream(value, k)
+# param_1 = obj.consec(num)
