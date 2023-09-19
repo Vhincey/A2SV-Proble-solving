@@ -13,3 +13,28 @@ class Solution(object):
             s[left], s[right] = s[right], s[left]
             left += 1
             right -= 1
+
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        # # Method 1
+        # l, h = 0, len(s) - 1
+
+        # while l < h:
+        #   s[l], s[h] = s[h], s[l]
+        #   l += 1
+        #   h -= 1
+        # return s
+
+        # Method 2
+        def do(l, r):
+          if l < r:
+            s[l], s[r] = s[r], s[l]
+            do(l + 1, r - 1)
+          
+        do(0, len(s) - 1)
+
+
+        
