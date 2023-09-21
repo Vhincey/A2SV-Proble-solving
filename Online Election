@@ -1,41 +1,6 @@
 class TopVotedCandidate:
 
-    # def __init__(self, persons: List[int], times: List[int]):
-    #     self.persons = persons
-    #     self.times = times
-    #     dict = {}
-    #     max_person = None
-    #     self.max_count = 0
-
-    #     for person in persons:
-    #         if person in dict:
-    #             dict[person] += 1
-    #         else:
-    #             dict[person] = 1
-    #         if dict[person] > self.max_count:
-    #           max_person = person
-    #           self.max_count = person
-
-    # def q(self, t: int) -> int:
-    #     n = len(self.persons)
-    #     l, r = 0, n - 1
-
-    #     while l < r:
-    #         mid = l + (r - l) // 2
-
-    #         if t < self.times[mid] :
-    #             r = mid - 1
-    #         elif t > self.times[mid]:
-    #             l = mid + 1
-    #         else:
-    #             return self.persons[mid]
-    #     if t > self.times[-1]:
-    #       return self.max_count
-    #     else:
-    #       return self.persons[l - 1]
-
-
-    def __init__(self, persons: List[int], times: List[int]):
+  def __init__(self, persons: List[int], times: List[int]):
         self.persons = persons
         self.times = times
         self.leader_counts = defaultdict(int)
