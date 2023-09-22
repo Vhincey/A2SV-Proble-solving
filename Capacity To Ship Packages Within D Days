@@ -1,0 +1,25 @@
+class Solution:
+    def shipWithinDays(self, weights: List[int], days: int) -> int:
+        l, r = max(weights), sum(weights)
+        mincap = r
+
+        while l <= r:
+            mid = l + (r - l) // 2 # mid is my capacity
+
+            cur, day = 0, 1
+            for weight in weights:
+                if cur + weight > mid:
+                    day += 1
+                    cur = 0
+                cur += weight
+            
+            
+            if day <= days:
+                r = mid - 1
+                mincap = min(mincap, mid)
+            else:
+                l = mid + 1
+        return mincap
+
+
+            
