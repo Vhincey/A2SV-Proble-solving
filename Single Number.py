@@ -16,6 +16,12 @@ class Solution:
                 if count == 1:
                     return num          
 
+# Method 2
+ result = 0
+        for num in nums:
+            result ^= num  # XOR operation
+        return result
+
                 
 
                     
