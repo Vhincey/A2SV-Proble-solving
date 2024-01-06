@@ -7,3 +7,13 @@ class Solution:
         k = k % n 
         
         nums[:] = nums[n - k:] + nums[:n - k]
+
+
+# Method 2
+n = len(nums)
+        rotated = [0] * n  
+        
+        for i in range(n):
+            rotated[(i + k) % n] = nums[i]  
+        
+        nums[:] = rotated
