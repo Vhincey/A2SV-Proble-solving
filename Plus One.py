@@ -5,6 +5,6 @@ class Solution:
 
         digits += 1
 
-        digits = [int(d) for d in str(digits)]
+        digits = (int(digit) for digit in str(digits))
 
         return digits
