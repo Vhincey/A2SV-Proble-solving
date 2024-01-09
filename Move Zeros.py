@@ -13,3 +13,15 @@ class Solution(object):
         for i in range(j, n):
             nums[i] = 0
         return nums
+
+# Method 2
+        n = len(nums)
+        l, r = 0, n - 1
+
+        while l <= r:
+            if nums[l] == 0:
+                nums.pop(l)
+                nums.append(0)
+                r -= 1
+            else:
+                l += 1
