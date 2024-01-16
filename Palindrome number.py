@@ -14,6 +14,13 @@ class Solution(object):
 myObject = Solution()
 
 print(myObject.isPalindrome(124))
+
+
+
+# Method 2
+str_x = str(x)
+    
+return str_x == str_x[::-1]
    
 
 
